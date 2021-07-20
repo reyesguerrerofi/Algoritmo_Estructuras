@@ -38,5 +38,3 @@ def Cola():
             print("Empty")
         else:
             print(self.cola[0])
-    
-    
