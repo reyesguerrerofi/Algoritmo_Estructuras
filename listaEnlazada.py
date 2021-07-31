@@ -56,3 +56,6 @@ class ListaS():
         while aux != None:
             print(aux.dato)
             aux = aux.siguiente
+    def size(self):
+        pass
+        """ Hay que recorrer todos los nodos nada mas"""
