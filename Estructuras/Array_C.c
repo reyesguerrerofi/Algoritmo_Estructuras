@@ -8,11 +8,11 @@ contigua los datos. Por ejemplo:
 
 Tiene varias operaciones:
 
--Insert [random]-@
--Insert [front]-@
--Insert [back]-@
--Delete [front]
--Delete [back]
+-Insert [random]-@ O(n) ya que tiene que recorrer el arreglo de tamaño n para desplazar a la derecha
+-Insert [front]-@ O(n) tiene que recorrer el arreglo de n tamaño para recorrer todo el contenido a la derecha
+-Insert [back]-@ O(1) cte porque solamente tiene que insertar al final del arreglo
+-Delete [front]-@O(n) por su desplazamiento a la izquierda
+-Delete [back]-@O(1) por solo eliminar al final. No podemos enviar a NULL debido a que es un array con un tipo de dato especifico. Esto se tendria que hacer con apuntadores. Esto se hace en las listas ligadas
 -Search [unsorted]
 -Search [sorted]
 */
@@ -27,6 +27,9 @@ int FrontInsert(int array[], int size);
 int RandInsert(int array[], int size);
 void Imprime(int array[], int size);
 
+int DeleteBack(int array[], int size);
+int DeleteFront(int array[], int size);
+
 int main(){
 
 //Creación de un array 
@@ -36,15 +39,25 @@ int main(){
 	for (i=0; i<=size; i++){
 		scanf("%i", &array1[i]);
 	}
+	
+	//Operaciones
 	Imprime(array1,size);
-	size = BackInsert(array1,size);
 	size = BackInsert(array1,size);
 	size = FrontInsert(array1,size);
 	size = RandInsert(array1,size);
 	Imprime(array1,size);
-	printf("Nuevo size %i",size);
+	printf("\nNuevo size %i",size);
+	size = DeleteBack(array1,size);
+	Imprime(array1,size);
+	printf("\nNuevo size %i",size);
+	size = DeleteFront(array1,size);
+	Imprime(array1,size);
+	printf("\nNuevo size %i",size);
+	
 	return 0;
 }
+
+/*Insert e impresion*/
 
 int BackInsert(int array[], int size){
 
@@ -87,4 +100,29 @@ void Imprime(int array[], int size){
 	for (i=0;i<=size; i++){
 		printf("%i ",array1[i]);
 	}
+}
+
+/*-----------------------------------------------------------*/
+/*Eliminacion de elementos*/
+
+int DeleteBack(int array[], int size){
+	
+	size--;
+	
+	for (i=0; i<=size; i++){
+		array[i] = array[i];
+	}
+	return size;
+
+}
+
+int DeleteFront(int array[], int size){
+	
+	size--;
+	for(i=0;i<=size;i++){
+		array[i] = array[i+1];
+	}
+	
+	return size;
+
 }
